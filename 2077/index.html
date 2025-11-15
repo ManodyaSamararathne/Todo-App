@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <h1>Task Manager</h1>
+        <p class="muted">Organize your day — Small steps, big wins!</p>
+      </div>
+
+      <div class="controls-top">
+        <input id="searchInput" type="search" placeholder="Search tasks..." />
+        <select id="filterPriority">
+          <option value="">All priorities</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <select id="filterStatus">
+          <option value="">All statuses</option>
+          <option value="To Do">To Do</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <select id="sortBy">
+          <option value="created-desc">Newest</option>
+          <option value="due-asc">Due date ↑</option>
+          <option value="due-desc">Due date ↓</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN AREA -->
+  <main class="container main-grid">
+
+    <!-- LEFT PANEL — FORM + STATS -->
+    <section class="panel form-panel">
+      <h2>Add / Edit Task</h2>
+
+      <form id="taskForm">
+        <input id="taskTitle" type="text" placeholder="Task title" required />
+        <textarea id="taskDescription" rows="3" placeholder="Description (optional)"></textarea>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="taskDue">Due date</label>
+            <input id="taskDue" type="date" />
+          </div>
+
+          <div class="form-field">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="saveTaskBtn" type="submit">Add Task</button>
+          <button id="cancelEditBtn" type="button" class="btn-muted" hidden>Cancel</button>
+        </div>
+      </form>
+
+      <!-- STATS -->
+      <div class="stats-container">
+        <div class="details">
+          <p class="muted">Progress Overview</p>
+          <div id="progressBar">
+            <div id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="stats-numbers">
+          <p id="numbers">0 / 0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL — TASK LIST -->
+    <section class="panel list-panel">
+      <h2>Tasks</h2>
+
+      <ul id="taskList" class="task-list"></ul>
+
+      <div class="footer-actions">
+        <button id="clearCompleted">Clear completed</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer container">
+    <p>© 2025 Task Manager</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
